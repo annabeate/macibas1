@@ -16,6 +16,28 @@
       <tbody id="dati-draugi">
       </tbody>
     </table>  
-    <script src="script.js"></script>
+    <script>
+
+  async function raditDatus()
+{
+    let t=document.getElementById('dati-draugi')
+    var draugiJSON =  JSON.parse('{{ data | tojson}}');    
+    for (let i = 0; i < draugiJSON.draugi.length; i++)
+      {
+        
+        t.innerHTML += `
+          <tr>
+            <td>${draugiJSON.draugi[i].Name}</td>
+            <td>${draugiJSON.draugi[i].Surname}</td>
+            <td>${draugiJSON.draugi[i].Phone_nr}</td>
+          </tr>
+        `
+      } 
+    console.log(draugiJSON);
+  
+}
+
+raditDatus();
+    </script>
   </body>
 </html>
